@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "brilianrachmadnurwachidin",
+    "password": "postgres",
+    "database": "sepatu-diskonan-app-development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "brilianrachmadnurwachidin",
+    "password": "postgres",
+    "database": "sepatu-diskonan-app-test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "brilianrachmadnurwachidin",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

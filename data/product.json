@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Adidas Cloud Foam",
+    "size": 40,
+    "color": "Blue Navy",
+    "image_url": "https://akcdn.detik.net.id/visual/2020/03/17/df2b05ac-ed7a-461b-9267-2ae86e4223c9_169.jpeg?w=480&q=90"
+  },
+  {
+    "name": "Adidas Running",
+    "size": 42,
+    "color": "Black",
+    "image_url": "https://rukminim1.flixcart.com/image/332/398/kg8avm80-0/shoe/l/h/2/ew2449-adidas-cblack-ftwwht-original-imafwgsgzrx5tdcg.jpeg?q=50"
+  },
+  {
+    "name": "Nike Flex",
+    "size": 43,
+    "color": "Grey",
+    "image_url": "https://media.karousell.com/media/photos/products/2018/04/21/nike_flex_control_bnib_eu_44_original_sport_station_1524295505_d2f7575b.jpg"
+  },
+  {
+    "name": "Skechers GO RUN",
+    "size": 41,
+    "color": "Black",
+    "image_url": "https://cdn.runrepeat.com/i/skechers/31879/skechers-gorun-fast-valor-55103-men-s-shoes-trainers-in-black-black-a721-main.jpg"
+  }
+]
