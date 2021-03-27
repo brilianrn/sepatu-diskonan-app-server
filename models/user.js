@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { hashPass } = require('../helpers/passHelp');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -92,13 +93,13 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'User',
     hooks: {
       beforeCreate(user, opt){
-        if (!role.length) {
+        if (!user.role) {
           user.role = 'Customer'
         } else {
           user.role = 'Admin'
         }
 
-        // user.password = 
+        user.password = hashPass(user.password);
       }
     }
   });
