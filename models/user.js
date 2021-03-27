@@ -93,7 +93,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'User',
     hooks: {
       beforeCreate(user, opt){
-        if (!user.role) {
+        if (user.role === null) {
           user.role = 'Customer'
         } else {
           user.role = 'Admin'

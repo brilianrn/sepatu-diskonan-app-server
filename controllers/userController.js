@@ -28,17 +28,22 @@ class UserController{
           last_name: req.body.last_name,
           birth_date: req.body.birth_date,
           gender: req.body.gender,
-          role: 'Customer',
+          role: null,
           email: req.body.email,
           password: req.body.password
         }
     }
-    // console.log(newUser);
 
     User.create(newUser)
-    .then(data => {
-      console.log(data);
-      res.status(201).json(data)
+    .then(user => {
+      res.status(201).json({
+        message: `User with email ${user.email} successfully to created`,
+        data: {
+          first_name: user.first_name,
+          email: user.email,
+          gender: user.gender
+        }
+      })
     })
     .catch(err => {
       console.log(err);
