@@ -19,11 +19,23 @@ class ProductController{
   }
 
   static listProduct(req, res, next){
-    
+    Product.findAll()
+    .then(data => {
+      res.status(200).json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
   }
 
   static getOneProduct(req, res, next){
-    
+    Product.findByPk(+req.params.productId)
+    .then(data => {
+      res.status(200).json(data)
+    })
+    .catch(err => {
+      next(err);
+    })
   }
 
   static editProduct(req, res, next){
