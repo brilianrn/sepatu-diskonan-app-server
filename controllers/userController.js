@@ -1,3 +1,5 @@
+const { generateToken } = require('../helpers/jwt');
+const { comparePass } = require('../helpers/passHelp.js');
 const { User } = require('../models');
 
 class UserController{
@@ -28,17 +30,22 @@ class UserController{
           last_name: req.body.last_name,
           birth_date: req.body.birth_date,
           gender: req.body.gender,
-          role: 'Customer',
+          role: null,
           email: req.body.email,
           password: req.body.password
         }
     }
-    // console.log(newUser);
 
     User.create(newUser)
-    .then(data => {
-      console.log(data);
-      res.status(201).json(data)
+    .then(user => {
+      res.status(201).json({
+        message: `User with email ${user.email} successfully to created`,
+        data: {
+          first_name: user.first_name,
+          email: user.email,
+          gender: user.gender
+        }
+      })
     })
     .catch(err => {
       console.log(err);
@@ -46,7 +53,42 @@ class UserController{
   }
 
   static login(req, res, next){
+    let email = req.body.email;
+    let password = req.body.password;
 
+    User.findOne({ where: { email } })
+    .then(data => {
+      if (data) {
+        let cekPass = comparePass(password, data.password);
+        let payload = { id: data.id, email: data.email }
+
+        if (cekPass) {
+          let access_token = generateToken(payload);
+          
+          res.status(200).json({
+            first_name: data.first_name,
+            email: data.email,
+            access_token
+          })
+        } else {
+          throw new Error({
+            name: 'wrongPass',
+            code: 400
+          })
+        }
+      } else {
+        throw new Error({
+            name: 'wrongPass',
+            code: 400
+          })
+      }
+    })
+    .catch(err => {
+      next({
+        name: 'wrongPass',
+        code: 400
+      })
+    })
   }
 }
 
